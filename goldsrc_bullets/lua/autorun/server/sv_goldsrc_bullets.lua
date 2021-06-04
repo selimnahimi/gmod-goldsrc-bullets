@@ -1,5 +1,9 @@
 util.AddNetworkString("GoldSrcBulletImpact")
 
+local cvarParticles = CreateConVar("gsrc_bullets_particles", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc bullet particles")
+local cvarRicochet = CreateConVar("gsrc_bullets_ricochet", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc ricochet sounds")
+local cvarMode = CreateConVar("gsrc_bullets_mode", "hl1", FCVAR_REPLICATE, "GoldSrc bullet mode")
+
 game.AddParticles( "particles/goldsrc_impact.pcf" )
 PrecacheParticleSystem( "goldsrc_impact")
 
@@ -20,11 +24,13 @@ local function BulletCallBack(player, tr)
         if (hitEnt:IsNPC() or hitEnt:IsPlayer()) then return end
     end
 
-    if (math.random() > 0.6) then
+    if (cvarRicochet:GetBool() and math.random() > 0.6) then
         local choice = sounds[math.random(#sounds)]
 
         sound.Play(choice, tr.HitPos, 70, 100, 1)
     end
+
+    if (!cvarParticles:GetBool()) then return end
 
     net.Start("GoldSrcBulletImpact")
     net.WriteVector(tr.HitPos)
