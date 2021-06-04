@@ -1,0 +1,7 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "decals/cs16_impact_4"
+	"$translucent" 1
+	"$decal" 1
+	"$decalscale" 1
+}
