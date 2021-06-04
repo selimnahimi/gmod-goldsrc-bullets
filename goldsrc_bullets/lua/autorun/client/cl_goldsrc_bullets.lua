@@ -2,6 +2,7 @@ game.AddParticles( "particles/goldsrc_impact.pcf" )
 PrecacheParticleSystem( "goldsrc_impact")
 
 
-hook.Add("Think", "sdfdssdffdsfsd", function()
-    --ParticleEffect("goldsrc_impact", LocalPlayer():GetPos(), LocalPlayer():EyeAngles())
+net.Receive("GoldSrcBulletImpact", function()
+    local hitPos = net.ReadVector()
+    ParticleEffect("goldsrc_impact", hitPos, Angle( 0, 0, 0 ))
 end)

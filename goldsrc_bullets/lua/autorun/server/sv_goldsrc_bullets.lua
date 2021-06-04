@@ -1,3 +1,5 @@
+util.AddNetworkString("GoldSrcBulletImpact")
+
 game.AddParticles( "particles/goldsrc_impact.pcf" )
 PrecacheParticleSystem( "goldsrc_impact")
 
@@ -18,7 +20,9 @@ local function BulletCallBack(player, tr)
         sound.Play(choice, tr.HitPos, 70, 100, 1)
     end
 
-    ParticleEffect("goldsrc_impact", tr.HitPos, Angle( 0, 0, 0 ))
+    net.Start("GoldSrcBulletImpact")
+    net.WriteVector(tr.HitPos)
+    net.Broadcast()
 end
 
 hook.Add( "EntityFireBullets", "GoldSrcChangeBullets", function(shooter, data)
