@@ -14,6 +14,12 @@ local sounds = {
 }
 
 local function BulletCallBack(player, tr)
+    local hitEnt = tr.Entity
+
+    if (hitEnt != nil) then
+        if (hitEnt:IsNPC() or hitEnt:IsPlayer()) then return end
+    end
+
     if (math.random() > 0.6) then
         local choice = sounds[math.random(#sounds)]
 
