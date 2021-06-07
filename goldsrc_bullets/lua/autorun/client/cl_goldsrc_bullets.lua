@@ -39,7 +39,6 @@ function GoldSrcDoImpactParticle(hitPos, bodyHit, mode)
 end
 
 function GoldSrcPlayRicochet(pos)
-    print("Play")
     local cvarRicochet = GetConVar("gsrc_bullets_ricochet"):GetBool()
 
     if (cvarRicochet and !bodyHit and math.random() > 0.6) then

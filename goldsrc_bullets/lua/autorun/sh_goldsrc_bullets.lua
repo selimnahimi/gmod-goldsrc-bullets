@@ -38,7 +38,6 @@ function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
             GoldSrcPlayRicochet(tr.HitPos)
             
             lastParticlePosTable[hitString] = true
-            print(hitString)
 
             if (timePassed) then
                 -- lets empty the bullet table, because time has already passed
