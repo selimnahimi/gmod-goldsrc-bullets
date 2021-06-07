@@ -9,4 +9,5 @@
 - gsrc_bullets_particles_blood "1" - enable / disable blood particles
 - gsrc_bullets_ricochet "1" - enable / disable ricochet sounds
 - gsrc_bullets_headshot "1" - enable / disable headshot sounds
+- gsrc_bullets_helmet "50" - Minimum armor needed to play a helmet headshot sound
 - gsrc_bullets_mode "hl1" - mode, can be: hl1/cs16
