@@ -1,3 +1,11 @@
+if SERVER then
+    AddCSLuaFile( "autorun/client/cl_goldsrc_bullets.lua" )
+end
+
+if game.SinglePlayer() then
+    include("autorun/client/cl_goldsrc_bullets.lua")
+end
+
 local lastParticleTime = 0
 local lastParticlePosTable = {}
 
@@ -20,7 +28,8 @@ function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
         net.WriteVector(tr.HitPos)
         net.WriteBool(bodyHit)
         net.Broadcast()
-    else
+    end
+    if CLIENT or game.SinglePlayer() then
         -- This is a bit finnicky:
         -- The reason as to why there's a separate clientside version of this,
         -- is to count with the possiblity of lag. Kind of like prediction, except less complicated.
