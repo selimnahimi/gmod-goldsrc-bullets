@@ -15,11 +15,21 @@ local headshotSounds = {
     "gsrc/player/headshot3.wav"
 }
 
+local helmetSounds = {
+    "gsrc/player/bhit_helmet-1.wav"
+}
+
 function HeadshotHook(ply, hitgroup, dmginfo)
     if (cvarHeadshot:GetBool()) then
         if hitgroup == HITGROUP_HEAD then
-            ply:EmitSound(headshotSounds[math.random(#headshotSounds)])
-            --dmginfo:ScaleDamage(3)
+            local pickFrom
+            if ply:IsPlayer() and ply:Armor() < 50 then
+                pickFrom = headshotSounds
+            else
+                pickFrom = helmetSounds
+            end
+
+            ply:EmitSound(pickFrom[math.random(#pickFrom)])
         end
     end
 end
