@@ -8,7 +8,15 @@ local cvarParticlesImpact = CreateClientConVar("gsrc_bullets_particles_impact", 
 local cvarParticlesBlood  = CreateClientConVar("gsrc_bullets_particles_blood", "1", true, false)
 
 -- Ricochet sounds
-local sounds = {
+local sounds_hl1 = {
+    "gsrc/weapons/ric1.wav",
+    "gsrc/weapons/ric2.wav",
+    "gsrc/weapons/ric3.wav",
+    "gsrc/weapons/ric4.wav",
+    "gsrc/weapons/ric5.wav"
+}
+
+local sounds_cs16 = {
     "gsrc/weapons/ric1.wav",
     "gsrc/weapons/ric2.wav",
     "gsrc/weapons/ric3.wav",
@@ -35,7 +43,14 @@ function GoldSrcPlayRicochet(pos)
     local cvarRicochet = GetConVar("gsrc_bullets_ricochet"):GetBool()
 
     if (cvarRicochet and !bodyHit and math.random() > 0.6) then
-        local choice = sounds[math.random(#sounds)]
+        local pickFrom
+        if (cvarMode:GetString() == "cs16") then
+            pickFrom = sounds_cs16
+        else
+            pickFrom = sounds_hl1
+        end
+
+        local choice = pickFrom[math.random(#pickFrom)]
 
         sound.Play(choice, pos, 70, 100, 1)
     end
