@@ -1,39 +1,22 @@
 util.AddNetworkString("GoldSrcBulletImpact")
 
-local cvarRicochet = CreateConVar("gsrc_bullets_ricochet", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc ricochet sounds")
-local cvarHeadshot = CreateConVar("gsrc_bullets_headshot", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc headshot sounds")
-local cvarHelmetThreshold = CreateConVar("gsrc_bullets_headshot_helmet", "50", FCVAR_REPLICATE, "Minimum armor needed to play a helmet headshot sound")
-
 game.AddParticles( "particles/goldsrc_impact.pcf" )
 PrecacheParticleSystem( "goldsrc_impact" )
 PrecacheParticleSystem( "goldsrc_cs16_impact" )
 PrecacheParticleSystem( "goldsrc_blood_impact" )
 
--- Sounds played on headshot
-local headshotSounds = {
-    "gsrc/player/headshot1.wav",
-    "gsrc/player/headshot2.wav",
-    "gsrc/player/headshot3.wav"
-}
-
-local helmetSounds = {
-    "gsrc/player/bhit_helmet-1.wav"
-}
-
 function HeadshotHook(ply, hitgroup, dmginfo)
-    if (cvarHeadshot:GetBool()) then
-        if hitgroup == HITGROUP_HEAD then
-            local neededArmor = cvarHelmetThreshold:GetInt()
-            local pickFrom
-            
-            if ply:IsPlayer() and ply:Armor() >= neededArmor then
-                pickFrom = helmetSounds
-            else
-                pickFrom = headshotSounds
-            end
-
-            ply:EmitSound(pickFrom[math.random(#pickFrom)])
+    if hitgroup == HITGROUP_HEAD and GetConVar("gsrc_bullets_headshot"):GetBool() then
+        local neededArmor = GetConVar("gsrc_bullets_headshot_helmet"):GetInt()
+        local choice
+        
+        if ply:IsPlayer() and ply:Armor() >= neededArmor then
+            choice = "GoldSrc.Impact.Helmet"
+        else
+            choice = "GoldSrc.Impact.Headshot"
         end
+
+        ply:EmitSound(choice)
     end
 end
 

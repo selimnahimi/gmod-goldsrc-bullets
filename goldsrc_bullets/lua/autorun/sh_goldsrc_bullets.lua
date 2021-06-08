@@ -5,6 +5,11 @@ end
 local lastParticleTime = 0
 local lastParticlePosTable = {}
 
+CreateConVar("gsrc_bullets_ricochet", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc ricochet sounds")
+CreateConVar("gsrc_bullets_headshot", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc headshot sounds")
+CreateConVar("gsrc_bullets_headshot_helmet", "50", FCVAR_REPLICATE, "Minimum armor needed to play a helmet headshot sound")
+
+
 -- Callback for the fired bullet (GM:EntityFireBullets)
 function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
     local hitEnt = tr.Entity
