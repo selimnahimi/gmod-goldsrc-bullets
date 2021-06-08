@@ -2,6 +2,7 @@
 ## Features:
 - Overrides Source impact materials with a GoldSrc equivalent
 - Adds extra particle effects and sounds when shooting bullets at walls or objects
+- Headshot sounds
 - Choice between 2 modes: Half-Life 1 and Counter-Strike 1.6 impact effects
 
 ## Convars:
