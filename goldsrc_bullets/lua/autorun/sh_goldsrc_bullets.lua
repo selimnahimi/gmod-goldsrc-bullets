@@ -1,7 +1,3 @@
-if SERVER then
-    AddCSLuaFile( "autorun/client/cl_goldsrc_bullets.lua" )
-end
-
 if game.SinglePlayer() then
     include("autorun/client/cl_goldsrc_bullets.lua")
 end
@@ -11,7 +7,6 @@ local lastParticlePosTable = {}
 
 -- Callback for the fired bullet (GM:EntityFireBullets)
 function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
-
     local hitEnt = tr.Entity
 
     local bodyHit = false
@@ -55,9 +50,4 @@ function GoldSrcBulletHook(shooter, data)
 end
 
 -- Hooks
-if SERVER then
-    hook.Add( "EntityFireBullets", "SVGoldSrcBulletHook", GoldSrcBulletHook)
-else
-    hook.Add( "EntityFireBullets", "CLGoldSrcBulletHook", GoldSrcBulletHook)
-end
-
+hook.Add( "EntityFireBullets", "GoldSrcBulletHook", GoldSrcBulletHook)
