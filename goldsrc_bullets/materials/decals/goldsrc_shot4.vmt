@@ -1,7 +1,7 @@
 "LightmappedGeneric"
 {
+	"$basetexture" "decals/goldsrc_shot4"
 	"$translucent" 1
-	"$basetexture" "decals/cs16_impact_1"
 	"$decal" 1
 	"$decalscale" 1
 }

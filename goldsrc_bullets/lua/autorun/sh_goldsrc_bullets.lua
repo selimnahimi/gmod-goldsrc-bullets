@@ -18,7 +18,9 @@ function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
 
     -- If we hit a player, we need a different impact effect.
     if (hitEnt != nil) then
-        bodyHit = hitEnt:IsNPC() or hitEnt:IsPlayer()
+        --local matType = tr.MatType
+        --bodyHit = matType == MAT_FLESH or matType == 
+        --bodyHit = hitEnt:IsNPC() or hitEnt:IsPlayer()
     end
 
     if SERVER then
@@ -26,15 +28,13 @@ function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
         net.Start("GoldSrcBulletImpact")
         net.WriteEntity(player)
         net.WriteVector(tr.HitPos)
-        net.WriteBool(bodyHit)
+        net.WriteInt(tr.MatType, 8)
+        net.WriteEntity(tr.Entity)
         net.Broadcast()
     end
     if CLIENT or game.SinglePlayer() then
         if (IsFirstTimePredicted()) then
-            GoldSrcDoImpactParticle(tr.HitPos, bodyHit, GetConVar("gsrc_bullets_mode"):GetString())
-            if not bodyHit then
-                GoldSrcPlayRicochet(tr.HitPos)
-            end
+            GoldSrcDoImpactParticle(tr.HitPos, tr.MatType, tr.Entity, GetConVar("gsrc_bullets_mode"):GetString())
         end
     end
 

@@ -4,6 +4,7 @@ game.AddParticles( "particles/goldsrc_impact.pcf" )
 PrecacheParticleSystem( "goldsrc_impact" )
 PrecacheParticleSystem( "goldsrc_cs16_impact" )
 PrecacheParticleSystem( "goldsrc_blood_impact" )
+PrecacheParticleSystem( "goldsrc_blood_impact_alien" )
 
 function HeadshotHook(ply, hitgroup, dmginfo)
     if hitgroup == HITGROUP_HEAD and GetConVar("gsrc_bullets_headshot"):GetBool() then

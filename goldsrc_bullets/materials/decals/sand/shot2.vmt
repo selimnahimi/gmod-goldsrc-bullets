@@ -1,7 +1,6 @@
-"LightmappedGeneric"
+"DecalModulate"
 {
-	"$translucent" 1
-	"$basetexture" "decals/cs16_impact_2"
+	"$basetexture" "decals/goldsrc_shot2"
 	"$decal" 1
 	"$decalscale" 1
 }
