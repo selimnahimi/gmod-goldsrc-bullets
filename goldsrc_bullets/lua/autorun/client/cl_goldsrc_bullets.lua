@@ -15,8 +15,12 @@ function GoldSrcDoImpactParticle(hitPos, matType, hitEnt, mode)
     local bodyHit = IsBodyHit(matType)
 
     if bodyHit and cvarParticlesBlood:GetBool() then
-        local zombie = string.match(hitEnt:GetClass(), ".*zombin?e.*") != nil
-        local headcrab = string.match(hitEnt:GetClass(), ".*headcrab.*") != nil
+        local zombie = false
+        local headcrab = false
+        if hitEnt:IsValid() then
+            zombie = string.match(hitEnt:GetClass(), ".*zombin?e.*") != nil
+            headcrab = string.match(hitEnt:GetClass(), ".*headcrab.*") != nil
+        end
 
         if zombie or headcrab or matType == MAT_ALIENFLESH or matType == MAT_ANTLION or matType == MAT_EGGSHELL then
             ParticleEffect("goldsrc_blood_impact_alien", hitPos, Angle( 0, 0, 0 ))
