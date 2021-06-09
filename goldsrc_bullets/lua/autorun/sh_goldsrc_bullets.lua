@@ -7,6 +7,7 @@ local lastParticlePosTable = {}
 
 CreateConVar("gsrc_bullets_ricochet", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc ricochet sounds")
 CreateConVar("gsrc_bullets_headshot", "1", FCVAR_REPLICATE, "Enable/Disable the GoldSrc headshot sounds")
+CreateConVar("gsrc_bullets_headshot_players", "0", FCVAR_REPLICATE, "Only play headshot sounds for players")
 CreateConVar("gsrc_bullets_headshot_helmet", "50", FCVAR_REPLICATE, "Minimum armor needed to play a helmet headshot sound")
 
 
@@ -15,13 +16,6 @@ function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
     local hitEnt = tr.Entity
 
     local bodyHit = false
-
-    -- If we hit a player, we need a different impact effect.
-    if (hitEnt != nil) then
-        --local matType = tr.MatType
-        --bodyHit = matType == MAT_FLESH or matType == 
-        --bodyHit = hitEnt:IsNPC() or hitEnt:IsPlayer()
-    end
 
     if SERVER then
         -- Dispatch a bullet hit effect for every client
