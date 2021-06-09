@@ -59,8 +59,6 @@ net.Receive("GoldSrcBulletImpact", function()
     local hitEnt = net.ReadEntity()
     local mode = cvarMode:GetString()
 
-    print(matType)
-
     GoldSrcDoImpactParticle(hitPos, matType, hitEnt, mode)
     
     if (!bodyHit) then GoldSrcPlayRicochet(hitPos) end
