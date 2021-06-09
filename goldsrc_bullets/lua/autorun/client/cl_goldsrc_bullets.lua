@@ -29,7 +29,9 @@ function GoldSrcDoImpactParticle(hitPos, matType, hitEnt, mode)
         else
             ParticleEffect("goldsrc_cs16_impact", hitPos, Angle( 0, 0, 0 ))
         end
+    end
 
+    if !bodyHit then
         GoldSrcPlayRicochet(hitPos)
     end
 end
