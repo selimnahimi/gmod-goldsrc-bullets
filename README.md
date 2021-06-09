@@ -1,3 +1,4 @@
+[https://steamcommunity.com/sharedfiles/filedetails/?id=2511367699](https://steamcommunity.com/sharedfiles/filedetails/?id=2511367699)
 
 ## Features:
 - Overrides Source impact materials with a GoldSrc equivalent
