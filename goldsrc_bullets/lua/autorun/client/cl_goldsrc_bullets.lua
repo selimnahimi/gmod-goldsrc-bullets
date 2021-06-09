@@ -12,8 +12,9 @@ local function IsBodyHit(matType)
 end
 
 function GoldSrcDoImpactParticle(hitPos, matType, hitEnt, mode)
+    local bodyHit = IsBodyHit(matType)
 
-    if IsBodyHit(matType) and cvarParticlesBlood:GetBool() then
+    if bodyHit and cvarParticlesBlood:GetBool() then
         local zombie = string.match(hitEnt:GetClass(), ".*zombin?e.*") != nil
         local headcrab = string.match(hitEnt:GetClass(), ".*headcrab.*") != nil
 
@@ -22,7 +23,7 @@ function GoldSrcDoImpactParticle(hitPos, matType, hitEnt, mode)
         elseif matType == MAT_FLESH then
             ParticleEffect("goldsrc_blood_impact", hitPos, Angle( 0, 0, 0 ))
         end
-    elseif cvarParticlesImpact:GetBool() then
+    elseif !bodyHit and cvarParticlesImpact:GetBool() then
         if (mode == "hl1") then
             ParticleEffect("goldsrc_impact", hitPos, Angle( 0, 0, 0 ))
         else
@@ -60,6 +61,4 @@ net.Receive("GoldSrcBulletImpact", function()
     local mode = cvarMode:GetString()
 
     GoldSrcDoImpactParticle(hitPos, matType, hitEnt, mode)
-    
-    if (!bodyHit) then GoldSrcPlayRicochet(hitPos) end
 end)
