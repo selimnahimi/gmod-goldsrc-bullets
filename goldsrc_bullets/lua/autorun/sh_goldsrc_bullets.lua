@@ -1,3 +1,16 @@
+game.AddParticles( "particles/goldsrc_impact.pcf" )
+game.AddParticles( "particles/impact_fx.pcf" )
+PrecacheParticleSystem( "goldsrc_impact")
+PrecacheParticleSystem( "goldsrc_cs16_impact")
+PrecacheParticleSystem( "goldsrc_blood_impact")
+PrecacheParticleSystem("impact_concrete")
+PrecacheParticleSystem("impact_metal")
+PrecacheParticleSystem("impact_computer")
+PrecacheParticleSystem("impact_grass")
+PrecacheParticleSystem("impact_dirt")
+PrecacheParticleSystem("impact_wood")
+PrecacheParticleSystem("impact_glass")
+
 if game.SinglePlayer() then
     include("autorun/client/cl_goldsrc_bullets.lua")
 end
