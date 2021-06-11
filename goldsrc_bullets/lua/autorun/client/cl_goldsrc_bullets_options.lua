@@ -16,5 +16,8 @@ hook.Add( "PopulateToolMenu", "GoldSrcBulletOptionsMenu", function()
 
         combobox:AddChoice("Half-Life 1", "hl1")
         combobox:AddChoice("Counter-Strike 1.6", "cs16")
+
+        panel:Help("#goldsrc_bullets.option_disable_default_particle_help")
+        panel:CheckBox("#goldsrc_bullets.option_disable_default_particle", "cl_new_impact_effects")
 	end )
 end )
