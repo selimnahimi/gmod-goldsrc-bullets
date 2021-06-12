@@ -10,6 +10,7 @@ PrecacheParticleSystem("impact_grass")
 PrecacheParticleSystem("impact_dirt")
 PrecacheParticleSystem("impact_wood")
 PrecacheParticleSystem("impact_glass")
+PrecacheParticleSystem("impact_antlion")
 
 if game.SinglePlayer() then
     include("autorun/client/cl_goldsrc_bullets.lua")
