@@ -12,8 +12,8 @@ hook.Add( "PopulateToolMenu", "GoldSrcBulletOptionsMenu", function()
         panel:CheckBox("#goldsrc_bullets.option_headshot_only_players", "gsrc_bullets_headshot_players")
         panel:Help("#goldsrc_bullets.option_armor_for_helmet_sound")
         panel:NumSlider("", "gsrc_bullets_headshot_helmet", 0, 100, 0)
+        
         local combobox = panel:ComboBox( "#goldsrc_bullets.option_impact_mode", "gsrc_bullets_mode")
-
         combobox:AddChoice("Half-Life 1", "hl1")
         combobox:AddChoice("Counter-Strike 1.6", "cs16")
 
