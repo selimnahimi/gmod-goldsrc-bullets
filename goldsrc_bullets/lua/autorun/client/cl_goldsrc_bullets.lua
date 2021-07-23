@@ -5,12 +5,12 @@ local cvarParticlesBlood  = CreateClientConVar("gsrc_bullets_particles_blood", "
 local BLOOD_RED = 0
 local BLOOD_YELLOW = 1
 
-local fleshColors = {
-    MAT_FLESH = BLOOD_RED,
-    MAT_ALIENFLESH = BLOOD_YELLOW,
-    MAT_ANTLION = BLOOD_YELLOW,
-    MAT_EGGSHELL = BLOOD_YELLOW
-}
+local fleshColors = {}
+
+fleshColors[MAT_FLESH] = BLOOD_RED
+fleshColors[MAT_ALIENFLESH] = BLOOD_YELLOW
+fleshColors[MAT_ANTLION] = BLOOD_YELLOW
+fleshColors[MAT_EGGSHELL] = BLOOD_YELLOW
 
 local function IsBodyHit(matType, bloodColor)
     if bloodColor == nil then

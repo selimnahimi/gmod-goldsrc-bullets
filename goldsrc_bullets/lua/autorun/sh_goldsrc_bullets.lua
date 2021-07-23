@@ -45,6 +45,7 @@ function GoldSrcBulletCallback(player, tr, dmginfo, toCall)
         if CLIENT or game.SinglePlayer() then
             if (IsFirstTimePredicted()) then
                 GoldSrcDoImpactParticle(tr.HitPos, tr.MatType, tr.Entity, GetConVar("gsrc_bullets_mode"):GetString())
+                GoldSrcPlayRicochet(tr.HitPos, tr.MatType)
             end
         end
     end
