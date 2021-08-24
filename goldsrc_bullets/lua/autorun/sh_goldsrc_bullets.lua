@@ -63,17 +63,22 @@ function GoldSrcBulletHook(shooter, bullet)
             GoldSrcBulletCallback(player, tr, dmginfo, toCall)
         end
 
+        -- Source: VJ Base
+        -- The purpose of this part is to account for VJ Base NPC weapon spread.
+        -- If it is removed, NPCs will aim above their target's head
         if IsValid(shooter) && shooter:IsNPC() && shooter.IsVJBaseSNPC == true then
             local ene = shooter:GetEnemy()
             local wep = shooter:GetActiveWeapon()
 
-            local fSpread = (shooter:GetPos():Distance(ene:GetPos()) / 28) * shooter.WeaponSpread * (wep.NPC_CustomSpread or 1)
-            bullet.Spread = Vector(fSpread, fSpread, 0)
+            if shooter.WeaponSpread != nil then
+                local fSpread = (shooter:GetPos():Distance(ene:GetPos()) / 28) * shooter.WeaponSpread * (wep.NPC_CustomSpread or 1)
+                bullet.Spread = Vector(fSpread, fSpread, 0)
 
-            if shooter.WeaponUseEnemyEyePos == true then
-                bullet.Dir = (ene:EyePos() + ene:GetUp()*-5) - bullet.Src
-            else
-                bullet.Dir = (ene:GetPos() + ene:OBBCenter()) -  bullet.Src
+                if shooter.WeaponUseEnemyEyePos == true then
+                    bullet.Dir = (ene:EyePos() + ene:GetUp()*-5) - bullet.Src
+                else
+                    bullet.Dir = (ene:GetPos() + ene:OBBCenter()) -  bullet.Src
+                end
             end
         end
 
