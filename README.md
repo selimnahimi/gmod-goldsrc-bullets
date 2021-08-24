@@ -7,6 +7,7 @@
 - Choice between 2 modes: Half-Life 1 and Counter-Strike 1.6 impact effects
 
 ## Convars:
+- gsrc_bullets_enabled "1" - Enable/Disable the addon
 - gsrc_bullets_particles_impact "1" - enable / disable impact particles
 - gsrc_bullets_particles_blood "1" - enable / disable blood particles
 - gsrc_bullets_ricochet "1" - enable / disable ricochet sounds
